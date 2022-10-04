@@ -2,12 +2,11 @@ import React, { useEffect } from "react";
 import "./_loginScreen.scss";
 import logo from "../../components/header/log.png";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../../redux/actions/auth.action";
 import { useNavigate } from "react-router-dom";
+import { login } from "../../redux/actions/auth.action";
 
 const LoginScreen = () => {
   const dispatch = useDispatch();
-
   const accessToken = useSelector((state) => state.auth.accessToken);
 
   const handleLogin = () => {
