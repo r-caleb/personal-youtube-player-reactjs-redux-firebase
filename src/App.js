@@ -1,24 +1,64 @@
-import logo from './logo.svg';
-import './App.css';
+import { Container } from "react-bootstrap";
+import "./App.css";
+import Header from "./components/header/Header";
+import { useState,useEffect } from "react";
+import SideBar from "./components/sidebar/SideBar";
+import HomeScreen from "./screens/homeScreen/HomeScreen";
+import "./_app.scss";
+import LoginScreen from "./screens/loginScreen/LoginScreen";
+import { Route, Routes, Navigate, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+
+const Layout = ({ children }) => {
+  const [sidebar, toggleSidebar] = useState(false);
+
+  const handleToggleSidebar = () => toggleSidebar((value) => !value);
+
+  return (
+    <>
+      <Header handleToggleSidebar={handleToggleSidebar} />
+      <div className="app_container">
+        <SideBar sidebar={sidebar} handleToggleSidebar={handleToggleSidebar} />
+        <Container fluid className="app__main ">
+          {children}
+        </Container>
+      </div>
+    </>
+  );
+};
 
 function App() {
+  const { accessToken, loading } = useSelector((state) => state.auth);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!loading && !accessToken) {
+      navigate("/auth");
+    }
+  }, [accessToken, loading, navigate]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <Layout>
+            <HomeScreen />
+          </Layout>
+        }
+      />
+      <Route path="/auth" element={<LoginScreen />} />
+      <Route
+        path="/search"
+        element={
+          <Layout>
+            <h1>Résultats de recherche</h1>
+          </Layout>
+        }
+      />
+      <Route path="*" element={<Navigate to="/" />} />:
+    </Routes>
   );
 }
 
