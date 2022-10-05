@@ -3,9 +3,11 @@ import "./_header.scss";
 import { FaBars } from "react-icons/fa";
 import { AiOutlineSearch } from "react-icons/ai";
 import { MdNotifications, MdApps } from "react-icons/md";
+import { useSelector } from "react-redux";
+
 import logo from "./log.png";
-import user from "./avatar.png";
 const Header = ({ handleToggleSidebar }) => {
+  const user = useSelector((state) => state.auth?.user);
   return (
     <div className="header ">
       <FaBars
@@ -26,7 +28,7 @@ const Header = ({ handleToggleSidebar }) => {
       <div className="header__icons">
         <MdNotifications size={28} />
         <MdApps size={28} />
-        <img src={user} alt="avatar" />
+        <img src={user?.photoURL} alt="avatar" />
       </div>
     </div>
   );

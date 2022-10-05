@@ -32,9 +32,9 @@ width: 45px;
 
    &__title {
       margin-bottom: 0.1rem;
-
-      color: #fff;
-   }
+      color: $text-color;
+      @include line-clamp(1);
+    }
 
    &__details {
       display: flex;
