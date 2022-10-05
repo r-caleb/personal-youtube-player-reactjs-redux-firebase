@@ -8,7 +8,6 @@ import { useSelector } from "react-redux";
 import logo from "./log.png";
 const Header = ({ handleToggleSidebar }) => {
   const user = useSelector((state) => state.auth?.user);
-  console.log(user);
   return (
     <div className="header ">
       <FaBars
