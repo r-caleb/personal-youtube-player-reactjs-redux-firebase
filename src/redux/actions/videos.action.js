@@ -62,7 +62,7 @@ export const getVideosByCategory = (keyword) => async (dispatch, getState) => {
       params: {
         part: "snippet",
 
-        maxResults: 20,
+        maxResults: 30,
         pageToken: getState().homeVideos.nextPageToken,
         q: keyword,
         type: "video",
@@ -86,30 +86,30 @@ export const getVideosByCategory = (keyword) => async (dispatch, getState) => {
   }
 };
 
-export const getVideoById = id => async dispatch => {
+export const getVideoById = (id) => async (dispatch) => {
   try {
-     dispatch({
-        type: SELECTED_VIDEO_REQUEST,
-     })
+    dispatch({
+      type: SELECTED_VIDEO_REQUEST,
+    });
 
-     const { data } = await request('/videos', {
-        params: {
-           part: 'snippet,statistics',
-           id: id,
-        },
-     })
-     dispatch({
-        type: SELECTED_VIDEO_SUCCESS,
-        payload: data.items[0],
-     })
+    const { data } = await request("/videos", {
+      params: {
+        part: "snippet,statistics",
+        id: id,
+      },
+    });
+    dispatch({
+      type: SELECTED_VIDEO_SUCCESS,
+      payload: data.items[0],
+    });
   } catch (error) {
-     console.log(error.message)
-     dispatch({
-        type: SELECTED_VIDEO_FAIL,
-        payload: error.message,
-     })
+    console.log(error.message);
+    dispatch({
+      type: SELECTED_VIDEO_FAIL,
+      payload: error.message,
+    });
   }
-}
+};
 
 export const getRelatedVideos = (id) => async (dispatch) => {
   try {
@@ -166,7 +166,7 @@ export const getVideosBySearch = (keyword) => async (dispatch) => {
   }
 };
 
-export const getSubscribedChannels = () => async (dispatch, getState) => {
+export const getVideosByChannel = () => async (dispatch, getState) => {
   try {
     dispatch({
       type: SUBSCRIPTIONS_CHANNEL_REQUEST,
@@ -194,7 +194,7 @@ export const getSubscribedChannels = () => async (dispatch, getState) => {
   }
 };
 
-export const getVideosByChannel = (id) => async (dispatch) => {
+/* export const getVideosByChannel = (id) => async (dispatch) => {
   try {
     dispatch({
       type: CHANNEL_VIDEOS_REQUEST,
@@ -231,3 +231,4 @@ export const getVideosByChannel = (id) => async (dispatch) => {
     });
   }
 };
+ */

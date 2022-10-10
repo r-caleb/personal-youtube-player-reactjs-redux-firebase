@@ -10,6 +10,7 @@ import {
 } from "react-icons/md";
 import { log_out } from "../../redux/actions/auth.action";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 const SideBar = ({ sidebar, handleToggleSidebar }) => {
   const dispatch = useDispatch();
@@ -22,31 +23,41 @@ const SideBar = ({ sidebar, handleToggleSidebar }) => {
       className={sidebar ? "sidebar open" : "sidebar"}
       onClick={() => handleToggleSidebar(false)}
     >
-      <li>
-        <MdHome size={23} />
-        <span>Accueil</span>
-      </li>
-      <li>
-        <MdSubscriptions size={23} />
-        <span>Abonnements</span>
-      </li>
+      <Link to="/">
+        <li>
+          <MdHome size={23} />
+          <span>Accueil</span>
+        </li>
+      </Link>
+      <Link to="/feed/subscriptions">
+        <li>
+          <MdSubscriptions size={23} />
+          <span>Abonnements</span>
+        </li>
+      </Link>
+
       <li>
         <MdThumbUp size={23} />
-        <span>Video Aimé</span>
+        <span>Vidéos "J'aime"</span>
       </li>
+
       <li>
         <MdHistory size={23} />
         <span>Historique</span>
       </li>
+
       <li>
         <MdLibraryBooks size={23} />
         <span>Bibliothèque</span>
       </li>
+
       <hr />
+
       <li onClick={logOutHandler}>
         <MdExitToApp size={23} />
-        <span>Log Out</span>
-      </li>   
+        <span>Se déconnecter</span>
+      </li>
+
       <hr />
     </nav>
   );

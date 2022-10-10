@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import "./_loginScreen.scss";
+import "./loginScreen.scss";
 import logo from "../../components/header/log.png";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
