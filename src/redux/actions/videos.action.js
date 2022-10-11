@@ -166,7 +166,7 @@ export const getVideosBySearch = (keyword) => async (dispatch) => {
   }
 };
 
-export const getVideosByChannel = () => async (dispatch, getState) => {
+export const getSubscribedChannels = () => async (dispatch, getState) => {
   try {
     dispatch({
       type: SUBSCRIPTIONS_CHANNEL_REQUEST,
@@ -193,8 +193,7 @@ export const getVideosByChannel = () => async (dispatch, getState) => {
     });
   }
 };
-
-/* export const getVideosByChannel = (id) => async (dispatch) => {
+export const getVideosByChannel = (id) => async (dispatch) => {
   try {
     dispatch({
       type: CHANNEL_VIDEOS_REQUEST,
@@ -231,4 +230,3 @@ export const getVideosByChannel = () => async (dispatch, getState) => {
     });
   }
 };
- */

@@ -13,7 +13,7 @@ const SubscriptionsScreen = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getVideosByChannel());
+    dispatch(getSubscribedChannels());
   }, [dispatch]);
 
   const { loading, videos } = useSelector(
