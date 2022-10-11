@@ -1,10 +1,6 @@
-import {
-  GoogleAuthProvider,
-  getAuth,
-  signInWithPopup,
-  signOut,
-} from "firebase/auth";
-import app from "../../firebase";
+import firebase from "firebase/compat/app";
+
+import auth from "../../firebase";
 import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
@@ -18,15 +14,16 @@ export const login = () => async (dispatch) => {
     dispatch({
       type: LOGIN_REQUEST,
     });
-    const auth = getAuth(app);
-    const googleProvider = new GoogleAuthProvider();
-    googleProvider.addScope('https://www.googleapis.com/auth/youtube.force-ssl')
-    const res = await signInWithPopup(auth, googleProvider);
 
-    const accessToken = res.user.accessToken;
+    const provider = new firebase.auth.GoogleAuthProvider();
+    provider.addScope("https://www.googleapis.com/auth/youtube.force-ssl");
+
+    const res = await auth.signInWithPopup(provider);
+    const accessToken = res.credential.accessToken;
+    console.log(res);
     const profile = {
-      name: res.user.displayName,
-      photoURL: res.user.photoURL,
+      name: res.additionalUserInfo.profile.name,
+      photoURL: res.additionalUserInfo.profile.picture,
     };
 
     sessionStorage.setItem("ytc-access-token", accessToken);
@@ -48,8 +45,9 @@ export const login = () => async (dispatch) => {
     });
   }
 };
+
 export const log_out = () => async (dispatch) => {
-  await signOut(getAuth(app));
+  await auth.signOut();
   dispatch({
     type: LOG_OUT,
   });
