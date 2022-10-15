@@ -106,7 +106,7 @@ const VideoHorizontal = ({ video, searchScreen, subScreen }) => {
 
         {isVideo && (
           <div className="videoHorizontal__details">
-            <AiFillEye /> {numeral(views).format("0.a")} Views •
+            <AiFillEye /> {numeral(views).format("0.a")} Vues •
             {moment(publishedAt).fromNow()}
           </div>
         )}
@@ -120,7 +120,7 @@ const VideoHorizontal = ({ video, searchScreen, subScreen }) => {
           <p className="mb-0">{channelTitle}</p>
         </div>
         {subScreen && (
-          <p className="mt-2">{video.contentDetails.totalItemCount} Videos</p>
+          <p className="mt-2">{video.contentDetails.totalItemCount} Vidéos</p>
         )}
       </Col>
     </Row>

@@ -19,7 +19,7 @@ const Video = ({ video, channelScreen }) => {
       thumbnails: { medium },
     },
     contentDetails,
-  } = video;
+  } = video; 
 
   const [views, setViews] = useState(null);
   const [duration, setDuration] = useState(null);
@@ -77,7 +77,7 @@ const Video = ({ video, channelScreen }) => {
       <div className="video__title">{title}</div>
       <div className="video__details">
         <span>
-          <AiFillEye /> {numeral(views).format("0.a")} Views •{" "}
+          <AiFillEye /> {numeral(views).format("0.a")} Vues •{" "}
         </span>{" "}
         <span> {moment(publishedAt).fromNow()} </span>
       </div>

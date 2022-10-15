@@ -34,18 +34,18 @@ const Comments = ({ videoId, totalComments }) => {
   };
   return (
     <div className="comments">
-      <p>{totalComments} Comments</p>
+      <p>{totalComments} Commentaires</p>
       <div className="my-2 comments__form d-flex w-100">
         <img src={photoURL} alt="avatar" className="mr-3 rounded-circle" />
         <form onSubmit={handleComment} className="d-flex flex-grow-1">
           <input
             type="text"
             className="flex-grow-1"
-            placeholder="Write a comment..."
+            placeholder="Ajoutez un commentaire…"
             value={text}
             onChange={(e) => setText(e.target.value)}
           />
-          <button className="p-2 border-0">Comment</button>
+          <button className="p-2 border-0">Soumettre</button>
         </form>
       </div>
       <div className="comments__list">
