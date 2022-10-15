@@ -14,7 +14,7 @@ const LoginScreen = () => {
   };
   const navigate = useNavigate();
 
-  useEffect(() => {
+  useEffect(() => { 
     if (accessToken) {
       navigate("/");
     }
