@@ -35,12 +35,12 @@ const ChannelScreen = () => {
           <div className="ml-3 channelHeader__details">
             <h3>{snippet?.title}</h3>
             <span>
-              {numeral(statistics?.subscriberCount).format("0.a")} subscribers
+              {numeral(statistics?.subscriberCount).format("0.a")} abonnés
             </span>
           </div>
         </div>
 
-        <button>Subscribe</button>
+        <button>S'ABONNER</button>
       </div>
 
       <Container>

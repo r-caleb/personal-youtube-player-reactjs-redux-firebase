@@ -4,7 +4,7 @@ import Header from "./components/header/Header";
 import { useState, useEffect } from "react";
 import SideBar from "./components/sidebar/SideBar";
 import HomeScreen from "./screens/homeScreen/HomeScreen";
-import "./_app.scss";
+import "./_App.scss";
 import LoginScreen from "./screens/loginScreen/LoginScreen";
 import { Route, Routes, Navigate, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -12,6 +12,7 @@ import WatchScreen from "./screens/watchscreen/WatchScreen";
 import SearchScreen from "./screens/SearchScreen";
 import SubscriptionsScreen from "./screens/subscriptions/SubscriptionsScreen";
 import ChannelScreen from "./screens/channelScreen/ChannelScreen";
+import LikeScreen from "./screens/likeScreen/LikeScreen";
 
 const Layout = ({ children }) => {
   const [sidebar, toggleSidebar] = useState(false);
@@ -31,7 +32,7 @@ const Layout = ({ children }) => {
   );
 };
 
-function App() {
+export default function App() {
   const { accessToken, loading } = useSelector((state) => state.auth);
 
   const navigate = useNavigate();
@@ -78,6 +79,14 @@ function App() {
         }
       />
       <Route
+        path="/feed/like"
+        element={
+          <Layout>
+            <LikeScreen />
+          </Layout>
+        }
+      />
+      <Route
         path="/channel/:channelId"
         element={
           <Layout>
@@ -89,5 +98,3 @@ function App() {
     </Routes>
   );
 }
-
-export default App;

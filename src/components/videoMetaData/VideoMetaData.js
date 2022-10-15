@@ -35,7 +35,7 @@ const VideoMetaData = ({ video: { snippet, statistics }, videoId }) => {
         <h5>{title}</h5>
         <div className="py-1 d-flex justify-content-between align-items-center">
           <span>
-            {numeral(viewCount).format("0.a")} Views •{" "}
+            {numeral(viewCount).format("0.a")} Vues •{" "}
             {moment(publishedAt).fromNow()}
           </span>
 
@@ -56,12 +56,12 @@ const VideoMetaData = ({ video: { snippet, statistics }, videoId }) => {
             alt=""
             className="mr-3 rounded-circle"
           />
-          <div className="d-flex flex-column">
+          <div className="d-flex flex-column channel-title">
             <span>{channelTitle}</span>
             <span>
               {" "}
               {numeral(channelStatistics?.subscriberCount).format("0.a")}{" "}
-              Subscribers
+              Abonnés
             </span>
           </div>
         </div>
@@ -69,14 +69,14 @@ const VideoMetaData = ({ video: { snippet, statistics }, videoId }) => {
         <button
           className={`p-2 m-2 border-0 btn ${subscriptionStatus && "btn-gray"}`}
         >
-          {subscriptionStatus ? "Subscribed" : "Subscribe"}
+          {subscriptionStatus ? "ABONNE" : "S'ABONNER"}
         </button>
       </div>
       <div className="videoMetaData__description">
         <ShowMoreText
           lines={3}
-          more="SHOW MORE"
-          less="SHOW LESS"
+          more="VOIR PLUS"
+          less="VOIR MOINS"
           anchorClass="showMoreText"
           expanded={false}
         >
